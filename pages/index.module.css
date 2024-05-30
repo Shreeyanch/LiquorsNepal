@@ -1,0 +1,223 @@
+.welcomeToLiquors {
+  align-self: stretch;
+  position: relative;
+  line-height: 120%;
+  font-weight: 600;
+}
+.newcalloutChild {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 19px;
+  background: linear-gradient(90deg, #fff, #fff7f7);
+  width: 300px;
+  height: 73px;
+  mix-blend-mode: normal;
+}
+.newcalloutItem {
+  position: absolute;
+  top: 19px;
+  left: 9px;
+  border-radius: 23px;
+  background-color: #25ab75;
+  width: 34px;
+  height: 35px;
+}
+.vectorIcon {
+  position: absolute;
+  top: 30px;
+  left: 17px;
+  width: 19px;
+  height: 13px;
+}
+.span {
+  text-decoration: underline;
+}
+.completeTheFormContainer {
+  position: absolute;
+  top: 10px;
+  left: 56px;
+  letter-spacing: 0.5px;
+  line-height: 18px;
+  display: inline-block;
+  width: 239px;
+  height: 54px;
+  opacity: 0.8;
+}
+.newcallout {
+  width: 300px;
+  position: relative;
+  height: 73px;
+  font-size: var(--font-size-3xs);
+  color: #1b1919;
+}
+.formHeader,
+.shareYourTravelsForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.formHeader {
+  align-self: stretch;
+  align-items: flex-start;
+  gap: 20px;
+}
+.shareYourTravelsForm {
+  flex: 1;
+  align-items: center;
+  padding: var(--padding-xl) var(--padding-81xl);
+  gap: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative !important;
+  left: auto !important;
+}
+.dRenderingIsometricFdgdf1Icon {
+  align-self: stretch;
+  flex: 1;
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+  object-fit: cover;
+}
+.shareYourTravelsFormParent {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--padding-xl);
+  gap: var(--gap-81xl);
+}
+.poweredBy {
+  height: 27px;
+  position: relative;
+  line-height: 130%;
+  font-weight: 300;
+  display: inline-block;
+}
+.letterLogo2 {
+  width: 169px;
+  position: relative;
+  height: 24px;
+  object-fit: cover;
+  mix-blend-mode: normal;
+}
+.poweredByParent {
+  flex: 1;
+  flex-direction: row;
+  gap: 2px;
+}
+.demoForm1,
+.demoForm1Inner,
+.poweredByParent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.demoForm1Inner {
+  align-self: stretch;
+  flex-direction: row;
+  padding: var(--padding-xl) 0;
+  text-align: center;
+  font-size: 21px;
+  font-family: var(--font-inter);
+}
+.demoForm1 {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  flex-direction: column;
+  padding: var(--padding-81xl) 0;
+  box-sizing: border-box;
+  gap: var(--gap-81xl);
+  background-image: url(/demo-form-1@3x.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+  mix-blend-mode: normal;
+  text-align: left;
+  font-size: 50px;
+  color: var(--color-white);
+  font-family: var(--font-poppins);
+}
+@media screen and (max-width: 1200px) {
+  .shareYourTravelsForm {
+    padding-left: var(--padding-31xl);
+    padding-right: var(--padding-31xl);
+    box-sizing: border-box;
+  }
+  .shareYourTravelsFormParent {
+    gap: 50px;
+  }
+  .poweredBy {
+    font-weight: 300;
+    font-family: var(--font-montserrat);
+    font-size: 17px;
+  }
+  .demoForm1Inner {
+    display: flex;
+  }
+  .demoForm1 {
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 960px) {
+  .shareYourTravelsForm {
+    padding: var(--padding-5xl) 0;
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative !important;
+    left: auto !important;
+    width: 90%;
+  }
+  .dRenderingIsometricFdgdf1Icon,
+  .shareYourTravelsForm {
+    flex: unset;
+    align-self: stretch;
+  }
+  .shareYourTravelsFormParent {
+    flex-direction: column;
+  }
+  .demoForm1Inner {
+    display: flex;
+  }
+}
+@media screen and (max-width: 420px) {
+  .completeTheFormContainer {
+    font-size: var(--font-size-3xs);
+    line-height: 16px;
+  }
+  .shareYourTravelsForm {
+    padding-left: var(--padding-5xl);
+    padding-right: var(--padding-5xl);
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative !important;
+    left: auto !important;
+    width: 100% !important;
+  }
+  .shareYourTravelsFormParent {
+    gap: var(--gap-3xs);
+  }
+  .poweredBy {
+    font-weight: 100;
+    font-family: var(--font-montserrat);
+    font-size: 15px;
+  }
+  .letterLogo2 {
+    width: 100px;
+  }
+  .demoForm1Inner {
+    margin-top: -100px;
+  }
+  .demoForm1 {
+    gap: var(--gap-81xl);
+    padding-top: var(--padding-3xs);
+    padding-bottom: var(--padding-3xs);
+    box-sizing: border-box;
+  }
+}

@@ -1,0 +1,313 @@
+/* .input {
+  border: 0;
+  background-color: transparent;
+  align-self: stretch;
+  font-family: var(--font-roboto);
+  font-size: var(--font-size-base);
+  color: var(--color-gray-100);
+}
+.formFields,
+.nameInput {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.formFields {
+  gap: var(--gap-3xs);
+}
+.label,
+.ssoIcon {
+  position: relative;
+}
+.ssoIcon {
+  width: 24px;
+  height: 24px;
+  object-fit: cover;
+}
+.label {
+  font-size: var(--font-size-base);
+  letter-spacing: -0.01em;
+  line-height: 24px;
+  font-weight: 500;
+  font-family: var(--font-poppins);
+  color: var(--color-gray-200);
+  text-align: left;
+}
+.instagram1 {
+  cursor: pointer;
+  border: 2px solid var(--color-aliceblue);
+  padding: var(--padding-base);
+  background-color: transparent;
+  align-self: stretch;
+  border-radius: var(--br-9980xl);
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap-base);
+}
+.instagram1:active {
+  background-color: var(--color-blue);
+}
+.ssoIcon2 {
+  width: 46px;
+  position: relative;
+  height: 31px;
+}
+.label2 {
+  position: relative;
+  font-size: var(--font-size-base);
+  letter-spacing: -0.01em;
+  line-height: 24px;
+  font-weight: 500;
+  font-family: var(--font-poppins);
+  color: var(--color-gray-200);
+  white-space: pre-wrap;
+  text-align: left;
+}
+.ssoLogin {
+  cursor: pointer;
+  border: 2px solid var(--color-aliceblue);
+  padding: var(--padding-base);
+  background-color: transparent;
+  align-self: stretch;
+  border-radius: var(--br-9980xl);
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap-base);
+}
+.submit {
+  flex: 1;
+  position: relative;
+  font-size: var(--font-size-base);
+  font-family: var(--font-roboto);
+  color: var(--color-white);
+  text-align: center;
+}
+.form,
+.formSubmitButton {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.formSubmitButton {
+  cursor: pointer;
+  border: 0;
+  padding: var(--padding-sm) var(--padding-4xs);
+  background-color: var(--color-mediumseagreen-200);
+  width: 195px;
+  border-radius: var(--br-9xs);
+  flex-direction: row;
+  box-sizing: border-box;
+}
+.form {
+  margin: 0;
+  align-self: stretch;
+  box-shadow: 0 0 24px rgba(0, 0, 0, 0.03);
+  border-radius: var(--br-xs);
+  background-color: var(--color-white);
+  flex-direction: column;
+  padding: var(--padding-9xl) var(--padding-11xl);
+  gap: var(--gap-mid);
+}
+@media screen and (max-width: 1200px) {
+  .formSubmitButton {
+    background-color: var(--color-mediumseagreen-100);
+  }
+}
+@media screen and (max-width: 960px) {
+  .formSubmitButton {
+    background-color: var(--color-mediumseagreen-100);
+  }
+}
+@media screen and (max-width: 420px) {
+  .label,
+  .label2 {
+    font-size: var(--font-size-sm);
+  }
+}
+
+ */
+
+
+ .input {
+  border: 0;
+  background-color: transparent;
+  align-self: stretch;
+  font-family: var(--font-roboto);
+  font-size: var(--font-size-base);
+  color: var(--color-gray-100);
+}
+.nameInput {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.input2 {
+  align-self: stretch;
+  font-family: var(--font-roboto);
+  font-size: var(--font-size-base);
+  color: var(--color-gray-100);
+}
+.formFields {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--gap-3xs);
+}
+.label,
+.ssoIcon {
+  position: relative;
+}
+.ssoIcon {
+  width: 24px;
+  height: 24px;
+  object-fit: cover;
+}
+.label {
+  font-size: var(--font-size-xs);
+  letter-spacing: -0.01em;
+  line-height: 24px;
+  font-weight: 500;
+  font-family: var(--font-poppins);
+  color: var(--color-gray-200);
+  text-align: left;
+}
+.instagram1 {
+  cursor: pointer;
+  border: 2px solid var(--color-aliceblue);
+  padding: var(--padding-base);
+  background-color: transparent;
+  align-self: stretch;
+  border-radius: var(--br-9980xl);
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap-base);
+}
+/* form.module.css */
+
+/* Styles for loading state */
+.instagram1.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  border-top-color: #333;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* .ssoLogin.clicked {
+  background-color: red;
+}
+
+.ssoLogin.green {
+  background-color: green;
+} */
+
+.ssoIcon1 {
+  width: 46px;
+  position: relative;
+  height: 31px;
+}
+.label1 {
+  position: relative;
+  font-size: var(--font-size-xs);
+  letter-spacing: -0.01em;
+  line-height: 24px;
+  font-weight: 500;
+  font-family: var(--font-poppins);
+  color: var(--color-gray-200);
+  white-space: pre-wrap;
+  text-align: left;
+}
+.ssoLogin {
+  cursor: pointer;
+  border: 2px solid var(--color-aliceblue);
+  padding: var(--padding-base);
+  background-color: transparent;
+  align-self: stretch;
+  border-radius: var(--br-9980xl);
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap-base);
+}
+.submit {
+  flex: 1;
+  position: relative;
+  font-size: var(--font-size-base);
+  font-family: var(--font-roboto);
+  color: var(--color-white);
+  text-align: center;
+}
+.form,
+.formSubmitButton {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.formSubmitButton {
+  cursor: pointer;
+  border: 0;
+  padding: var(--padding-sm) var(--padding-4xs);
+  background-color: var(--color-mediumseagreen-300);
+  width: 195px;
+  border-radius: var(--br-9xs);
+  flex-direction: row;
+  box-sizing: border-box;
+}
+.form {
+  margin: 0;
+  align-self: stretch;
+  box-shadow: 0 0 24px rgba(0, 0, 0, 0.03);
+  border-radius: var(--br-xs);
+  background-color: var(--color-white);
+  flex-direction: column;
+  padding: var(--padding-9xl) var(--padding-11xl);
+  gap: var(--gap-mid);
+}
+@media screen and (max-width: 1200px) {
+  .formSubmitButton {
+    background-color: var(--color-mediumseagreen-100);
+  }
+}
+@media screen and (max-width: 960px) {
+  .formSubmitButton {
+    background-color: var(--color-mediumseagreen-100);
+  }
+}
+@media screen and (max-width: 420px) {
+  .label,
+  .label1 {
+    font-size: var(--font-size-sm);
+  }
+}

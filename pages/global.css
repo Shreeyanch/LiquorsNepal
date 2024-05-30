@@ -1,0 +1,59 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300&display=swap");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+body {
+  margin: 0;
+  line-height: normal;
+}
+:root {
+  /* fonts */
+  --font-inter: Inter;
+  --font-montserrat: Montserrat;
+  --font-roboto: Roboto;
+  --font-poppins: Poppins;
+
+  /* font sizes */
+  --font-size-base: 16px;
+  --font-size-sm: 14px;
+  --font-size-3xs: 10px;
+
+  /* Colors */
+
+
+  --color-maroon: #581212;
+  --color-white: #fff;
+  --color-mediumseagreen-200: #25ab75;
+  --color-mediumseagreen-100: #22a155;
+  --color-mediumseagreen-300: rgba(34, 161, 85, 0.78);
+  --color-aliceblue: #e2e8f0;
+  --color-gray-200: #1e293b;
+  --color-gray-300: #1b1919;
+  --color-gray-100: rgba(0, 0, 0, 0.6);
+  --color-blue: #000fff;
+
+  /* Gaps */
+  --gap-81xl: 100px;
+  --gap-3xs: 10px;
+  --gap-mid: 17px;
+  --gap-base: 16px;
+
+  /* Paddings */
+  --padding-81xl: 100px;
+  --padding-3xs: 10px;
+  --padding-xl: 20px;
+  --padding-31xl: 50px;
+  --padding-5xl: 24px;
+  --padding-9xl: 28px;
+  --padding-11xl: 30px;
+  --padding-sm: 14px;
+  --padding-4xs: 9px;
+  --padding-base: 16px;
+
+  /* Border radiuses */
+  --br-xs: 12px;
+  --br-9xs: 4px;
+  --br-9980xl: 9999px;
+}
