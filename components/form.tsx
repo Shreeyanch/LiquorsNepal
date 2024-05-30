@@ -192,6 +192,8 @@ const Form: NextPage<FormType> = () => {
             id="Name"
             label="Name"
             required
+            InputLabelProps={{ shrink: true }}
+
             variant="outlined"
             value={Name}
             onChange={e => setName(e.target.value)}
@@ -204,6 +206,7 @@ const Form: NextPage<FormType> = () => {
             name="PhoneNumber"
             label=" 10 Digit Phone Number"
             id="PhoneNumber"
+            InputLabelProps={{ shrink: true }}
             required
             variant="outlined"
             value={PhoneNumber}
