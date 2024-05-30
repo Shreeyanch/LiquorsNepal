@@ -9,7 +9,7 @@ const DemoForm: NextPage = () => {
         <div className={styles.shareYourTravelsForm}>
           <div className={styles.formHeader}>
             <div className={styles.welcomeToLiquors}>
-              Welcome to Liquors Nepal Pvt. Ltd.
+              Welcome to Nepal Liquors Pvt. Ltd.
             </div>
             <div className={styles.newcallout}>
               <div className={styles.newcalloutChild} />

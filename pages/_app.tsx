@@ -23,7 +23,7 @@ export default function MyApp(props: AppProps) {
       <Head>
       <link rel="shortcut icon" href="/logo.png" />
 
-        <title>LiquorsNepal</title>
+        <title>NepalLiquors</title>
         <meta
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"
