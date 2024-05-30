@@ -177,6 +177,8 @@ const Form: NextPage<FormType> = () => {
     setName('');
     setPhoneNumber('');
     setDOB('');
+    setEmail('');
+
   };
 
   return (
