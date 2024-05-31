@@ -116,7 +116,7 @@ export default async function handler(
         valueInputOption: "USER_ENTERED",
         requestBody: {
           values: [
-            [body.Name, body.PhoneNumber, body.DOB]
+            [body.Name, body.PhoneNumber, body.DOB,body.Email]
           ],
         },
       });
