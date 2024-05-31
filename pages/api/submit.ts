@@ -130,7 +130,7 @@ export default async function handler(
 
       const smsData = {
         token: process.env.SPARROW_SMS_TOKEN,
-        from: "Demo",
+        from: "TheAlert",
         to: body.PhoneNumber, // Assuming PhoneNumber is a valid 10-digit number of Nepal
         text : `Hey ${body.Name}! Thankyou for filling the form. \n- Liquors Nepal Pvt Ltd`
       };

@@ -17,9 +17,7 @@ const DemoForm: NextPage = () => {
               <img className={styles.vectorIcon} alt="" src="/vector.svg" />
               <div className={styles.completeTheFormContainer}>
                 <span>
-                  Complete the form to get a code via SMS
-                  <span className={styles.span}>{` `}</span>on your phone. Show
-                  the code to the staff for a free appetizer.
+                Please take a moment to complete this form, follow us on Instagram, and leave us a review.
                 </span>
               </div>
             </div>
@@ -29,7 +27,7 @@ const DemoForm: NextPage = () => {
         <img
           className={styles.dRenderingIsometricFdgdf1Icon}
           alt=""
-          src="/3drenderingisometricfdgdf-1@2x.png"
+          src="/1.png"
         />
       </div>
       <div className={styles.demoForm1Inner}>
