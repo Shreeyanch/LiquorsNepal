@@ -132,7 +132,7 @@ export default async function handler(
         token: process.env.SPARROW_SMS_TOKEN,
         from: "TheAlert",
         to: body.PhoneNumber, // Assuming PhoneNumber is a valid 10-digit number of Nepal
-        text : `Hey ${body.Name}! Thankyou for filling the form. \n- Liquors Nepal Pvt Ltd`
+        text : `Hey ${body.Name}!\nThankyou for filling the form. \n- Liquors Nepal Pvt Ltd`
       };
       
       const smsResponse = await axios.post(

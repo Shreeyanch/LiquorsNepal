@@ -159,6 +159,7 @@ const Form: NextPage<FormType> = () => {
       Name,
       PhoneNumber,
       DOB,
+      Email,
     };
 
     // submit via api
