@@ -1,103 +1,9 @@
-// import type { NextPage } from "next";
-// import { useCallback } from "react";
-// import { TextField, InputAdornment, Icon, IconButton } from "@mui/material";
-// import styles from "./form.module.css";
-
-// export type FormType = {
-//   className?: string;
-// };
-
-// const Form: NextPage<FormType> = ({ className = "" }) => {
-//   const onInstagram1Click = useCallback(() => {
-//     window.open("https://www.instagram.com/signaturenepal/");
-//   }, []);
-
-//   const onInstagram2Click = useCallback(() => {
-//     window.open("https://www.instagram.com/smirnoff.nepal/");
-//   }, []);
-
-//   const onSSOLoginClick = useCallback(() => {
-//     window.open("https://reviewthis.biz/gbps");
-//   }, []);
-
-//   return (
-//     <form className={[styles.form, className].join(" ")}>
-//       <div className={styles.formFields}>
-//         <div className={styles.nameInput}>
-//           <TextField
-//             className={styles.input}
-//             color="primary"
-//             name="Name"
-//             label="Name"
-//             required={true}
-//             variant="outlined"
-//             sx={{ "& .MuiInputBase-root": { height: "56px" } }}
-//           />
-//         </div>
-//         <div className={styles.nameInput}>
-//           <TextField
-//             className={styles.input}
-//             color="primary"
-//             name="PhoneNumber"
-//             label="Phone Number"
-//             size="medium"
-//             required={true}
-//             variant="outlined"
-//             type="text"
-//             sx={{ "& .MuiInputBase-root": { height: "56px" } }}
-//           />
-//         </div>
-//         <div className={styles.nameInput}>
-//           <TextField
-//             className={styles.input}
-//             color="primary"
-//             name="PhoneNumber"
-//             label="DOB"
-//             size="medium"
-//             required={true}
-//             variant="outlined"
-//             type="text"
-//             sx={{ "& .MuiInputBase-root": { height: "56px" } }}
-//           />
-//         </div>
-//         <div className={styles.nameInput}>
-//           <TextField
-//             className={styles.input}
-//             color="primary"
-//             name="PhoneNumber"
-//             label="Email"
-//             size="medium"
-//             variant="outlined"
-//             type="text"
-//             sx={{ "& .MuiInputBase-root": { height: "56px" } }}
-//           />
-//         </div>
-//       </div>
-//       <button className={styles.instagram1} onClick={onInstagram1Click}>
-//         <img className={styles.ssoIcon} alt="" src="/sso-icon@2x.png" />
-//         <div className={styles.label}>Follow @signaturenepal</div>
-//       </button>
-//       <button className={styles.instagram1} onClick={onInstagram2Click}>
-//         <img className={styles.ssoIcon} alt="" src="/sso-icon@2x.png" />
-//         <div className={styles.label}>Follow @smirnoff.nepal</div>
-//       </button>
-//       <button className={styles.ssoLogin} onClick={onSSOLoginClick}>
-//         <img className={styles.ssoIcon2} alt="" src="/sso-icon.svg" />
-//         <div className={styles.label2}>{`Review us on Google   `}</div>
-//       </button>
-//       <button className={styles.formSubmitButton}>
-//         <div className={styles.submit}>Submit</div>
-//       </button>
-//     </form>
-//   );
-// };
-
-// export default Form;
-
 import React, { useState, useCallback, FormEvent } from "react";
 import { TextField, Button, CircularProgress } from "@mui/material";
 import styles from "./form.module.css";
 import { NextPage } from "next";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 export type FormType = {
   className?: string;
@@ -106,7 +12,7 @@ export type FormType = {
 const Form: NextPage<FormType> = () => {
   const [Name, setName] = useState('');
   const [PhoneNumber, setPhoneNumber] = useState('');
-  const [DOB, setDOB] = useState('');
+  const [DOB, setDOB] = useState<Date | null>(null);
   const [Email, setEmail] = useState('');
 
   const [instagramLoading, setInstagramLoading] = useState(false);
@@ -114,14 +20,11 @@ const Form: NextPage<FormType> = () => {
 
   const [instagram1Loading, setInstagram1Loading] = useState(false);
   const [instagram1Verified, setInstagram1Verified] = useState(false);
-  // const [googleLoading, setGoogleLoading] = useState(false);
-  // const [googleVerified, setGoogleVerified] = useState(false);
 
   const onSSOLoginClick = useCallback(async () => {
     setInstagramLoading(true);
     window.open("https://www.instagram.com/signaturenepal/");
-    // Simulate verification delay
-    await new Promise(resolve => setTimeout(resolve, 4000)); // Set to 7 seconds
+    await new Promise(resolve => setTimeout(resolve, 4000));
     setInstagramLoading(false);
     setInstagramVerified(true);
   }, []);
@@ -129,36 +32,18 @@ const Form: NextPage<FormType> = () => {
   const onSSOLoginClick1 = useCallback(async () => {
     setInstagram1Loading(true);
     window.open("https://www.instagram.com/smirnoff.nepal/");
-    // Simulate verification delay
-    await new Promise(resolve => setTimeout(resolve, 4000)); // Set to 7 seconds
+    await new Promise(resolve => setTimeout(resolve, 4000));
     setInstagram1Loading(false);
     setInstagram1Verified(true);
   }, []);
 
-
-
-
-  // const onSSOLogin1Click = useCallback(async () => {
-  //   setGoogleLoading(true);
-  //   window.open("https://reviewthis.biz/NepalLiquorsPvtLtd");
-  //   // Simulate verification delay
-  //   await new Promise(resolve => setTimeout(resolve, 10000)); // Set to 7 seconds
-  //   setGoogleLoading(false);
-  //   setGoogleVerified(true);
-  // }, []);
-
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
+
     if (!instagramVerified) {
-      alert("Please complete all steps  before submitting.");
+      alert("Please complete all steps before submitting.");
       return;
     }
-    // if (!instagramVerified || !googleVerified) {
-    //   alert("Please complete all steps  before submitting.");
-    //   return;
-    // }
-
 
     const form = {
       Name,
@@ -167,7 +52,6 @@ const Form: NextPage<FormType> = () => {
       Email,
     };
 
-    // submit via api
     const response = await fetch('/api/submit', {
       method: 'POST',
       headers: {
@@ -182,9 +66,8 @@ const Form: NextPage<FormType> = () => {
 
     setName('');
     setPhoneNumber('');
-    setDOB('');
+    setDOB(null);
     setEmail('');
-
   };
 
   return (
@@ -199,7 +82,6 @@ const Form: NextPage<FormType> = () => {
             label="Name"
             required
             InputLabelProps={{ shrink: true }}
-
             variant="outlined"
             value={Name}
             onChange={e => setName(e.target.value)}
@@ -210,29 +92,33 @@ const Form: NextPage<FormType> = () => {
             className={styles.input}
             color="primary"
             name="PhoneNumber"
-            label=" 10 Digit Phone Number"
+            label="10 Digit Phone Number"
             id="PhoneNumber"
             InputLabelProps={{ shrink: true }}
             required
             variant="outlined"
             value={PhoneNumber}
             onChange={e => setPhoneNumber(e.target.value)}
-            
           />
         </div>
         <div className={styles.nameInput}>
-          <TextField
+          <DatePicker
+            selected={DOB}
+            onChange={(date: Date) => setDOB(date)}
+            dateFormat="yyyy/MM/dd"
+            showYearDropdown
+            showMonthDropdown
             className={styles.input}
-            color="primary"
-            name="DOB"
-            id="DOB"
-            label="Date of Birth"
-            type="date"
-            required
-            InputLabelProps={{ shrink: true }}
-            variant="outlined"
-            value={DOB}
-            onChange={e => setDOB(e.target.value)}
+            customInput={
+              <TextField
+                className={styles.input}
+                color="primary"
+                label="Date of Birth"
+                required
+                variant="outlined"
+                InputLabelProps={{ shrink: true }}
+              />
+            }
           />
         </div>
         <div className={styles.nameInput}>
@@ -249,8 +135,6 @@ const Form: NextPage<FormType> = () => {
             onChange={e => setEmail(e.target.value)}
           />
         </div>
-
-      
       </div>
 
       <Button
@@ -260,7 +144,6 @@ const Form: NextPage<FormType> = () => {
       >
         <img className={styles.ssoIcon} alt="" src="/sso-icon@2x.png" />
         <div className={styles.label}>Follow @signaturenepal</div>
-
         {instagramLoading ? <CircularProgress size={20} color="inherit" className={styles.circularProgress} /> : instagramVerified ? <img className={styles.checkedIcon} alt="Verified" src="/checked-icon.svg" /> : null}
       </Button>
 
@@ -271,19 +154,8 @@ const Form: NextPage<FormType> = () => {
       >
         <img className={styles.ssoIcon} alt="" src="/sso-icon@2x.png" />
         <div className={styles.label}>Follow @smirnoff.nepal</div>
-
         {instagram1Loading ? <CircularProgress size={20} color="inherit" className={styles.circularProgress} /> : instagram1Verified ? <img className={styles.checkedIcon} alt="Verified" src="/checked-icon.svg" /> : null}
       </Button>
-      
-      {/* <Button
-        className={`${styles.ssoLogin} ${googleVerified ? styles.green : ''}`}
-        onClick={onSSOLogin1Click}
-        disabled={googleLoading || googleVerified}
-      >
-        <img className={styles.ssoIcon1} alt="" src="/sso-icon.svg" />
-        <div className={styles.label1}>Review us on Google</div>
-        {googleLoading ? <CircularProgress size={20} color="inherit" className={styles.circularProgress} /> : googleVerified ? <img className={styles.checkedIcon} alt="Verified" src="/checked-icon.svg" /> : null}
-      </Button> */}
 
       <Button className={styles.formSubmitButton} type="submit">
         <div className={styles.submit}>Submit</div>
