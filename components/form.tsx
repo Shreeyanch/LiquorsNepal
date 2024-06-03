@@ -114,14 +114,14 @@ const Form: NextPage<FormType> = () => {
 
   const [instagram1Loading, setInstagram1Loading] = useState(false);
   const [instagram1Verified, setInstagram1Verified] = useState(false);
-  const [googleLoading, setGoogleLoading] = useState(false);
-  const [googleVerified, setGoogleVerified] = useState(false);
+  // const [googleLoading, setGoogleLoading] = useState(false);
+  // const [googleVerified, setGoogleVerified] = useState(false);
 
   const onSSOLoginClick = useCallback(async () => {
     setInstagramLoading(true);
     window.open("https://www.instagram.com/signaturenepal/");
     // Simulate verification delay
-    await new Promise(resolve => setTimeout(resolve, 10000)); // Set to 7 seconds
+    await new Promise(resolve => setTimeout(resolve, 4000)); // Set to 7 seconds
     setInstagramLoading(false);
     setInstagramVerified(true);
   }, []);
@@ -130,7 +130,7 @@ const Form: NextPage<FormType> = () => {
     setInstagram1Loading(true);
     window.open("https://www.instagram.com/smirnoff.nepal/");
     // Simulate verification delay
-    await new Promise(resolve => setTimeout(resolve, 10000)); // Set to 7 seconds
+    await new Promise(resolve => setTimeout(resolve, 4000)); // Set to 7 seconds
     setInstagram1Loading(false);
     setInstagram1Verified(true);
   }, []);
@@ -138,22 +138,27 @@ const Form: NextPage<FormType> = () => {
 
 
 
-  const onSSOLogin1Click = useCallback(async () => {
-    setGoogleLoading(true);
-    window.open("https://reviewthis.biz/NepalLiquorsPvtLtd");
-    // Simulate verification delay
-    await new Promise(resolve => setTimeout(resolve, 10000)); // Set to 7 seconds
-    setGoogleLoading(false);
-    setGoogleVerified(true);
-  }, []);
+  // const onSSOLogin1Click = useCallback(async () => {
+  //   setGoogleLoading(true);
+  //   window.open("https://reviewthis.biz/NepalLiquorsPvtLtd");
+  //   // Simulate verification delay
+  //   await new Promise(resolve => setTimeout(resolve, 10000)); // Set to 7 seconds
+  //   setGoogleLoading(false);
+  //   setGoogleVerified(true);
+  // }, []);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
-    if (!instagramVerified || !googleVerified) {
+    if (!instagramVerified) {
       alert("Please complete all steps  before submitting.");
       return;
     }
+    // if (!instagramVerified || !googleVerified) {
+    //   alert("Please complete all steps  before submitting.");
+    //   return;
+    // }
+
 
     const form = {
       Name,
@@ -270,7 +275,7 @@ const Form: NextPage<FormType> = () => {
         {instagram1Loading ? <CircularProgress size={20} color="inherit" className={styles.circularProgress} /> : instagram1Verified ? <img className={styles.checkedIcon} alt="Verified" src="/checked-icon.svg" /> : null}
       </Button>
       
-      <Button
+      {/* <Button
         className={`${styles.ssoLogin} ${googleVerified ? styles.green : ''}`}
         onClick={onSSOLogin1Click}
         disabled={googleLoading || googleVerified}
@@ -278,7 +283,7 @@ const Form: NextPage<FormType> = () => {
         <img className={styles.ssoIcon1} alt="" src="/sso-icon.svg" />
         <div className={styles.label1}>Review us on Google</div>
         {googleLoading ? <CircularProgress size={20} color="inherit" className={styles.circularProgress} /> : googleVerified ? <img className={styles.checkedIcon} alt="Verified" src="/checked-icon.svg" /> : null}
-      </Button>
+      </Button> */}
 
       <Button className={styles.formSubmitButton} type="submit">
         <div className={styles.submit}>Submit</div>
