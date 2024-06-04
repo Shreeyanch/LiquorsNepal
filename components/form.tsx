@@ -1,4 +1,3 @@
-
 import React, { useState, useCallback, FormEvent } from "react";
 import { TextField, Button, CircularProgress } from "@mui/material";
 import styles from "./form.module.css";
@@ -7,7 +6,6 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
-
 export type FormType = {
   className?: string;
 };
@@ -15,7 +13,7 @@ export type FormType = {
 const Form: NextPage<FormType> = () => {
   const [Name, setName] = useState('');
   const [PhoneNumber, setPhoneNumber] = useState('');
-  const [DOB, setDOB] = useState('');
+  const [DOB, setDOB] = useState<Date | null>(null);
   const [Email, setEmail] = useState('');
 
   const [instagramLoading, setInstagramLoading] = useState(false);
@@ -23,14 +21,11 @@ const Form: NextPage<FormType> = () => {
 
   const [instagram1Loading, setInstagram1Loading] = useState(false);
   const [instagram1Verified, setInstagram1Verified] = useState(false);
-  // const [googleLoading, setGoogleLoading] = useState(false);
-  // const [googleVerified, setGoogleVerified] = useState(false);
 
   const onSSOLoginClick = useCallback(async () => {
     setInstagramLoading(true);
     window.open("https://www.instagram.com/signaturenepal/");
-    // Simulate verification delay
-    await new Promise(resolve => setTimeout(resolve, 4000)); // Set to 7 seconds
+    await new Promise(resolve => setTimeout(resolve, 4000));
     setInstagramLoading(false);
     setInstagramVerified(true);
   }, []);
@@ -38,45 +33,26 @@ const Form: NextPage<FormType> = () => {
   const onSSOLoginClick1 = useCallback(async () => {
     setInstagram1Loading(true);
     window.open("https://www.instagram.com/smirnoff.nepal/");
-    // Simulate verification delay
-    await new Promise(resolve => setTimeout(resolve, 4000)); // Set to 7 seconds
+    await new Promise(resolve => setTimeout(resolve, 4000));
     setInstagram1Loading(false);
     setInstagram1Verified(true);
   }, []);
-
-
-
-
-  // const onSSOLogin1Click = useCallback(async () => {
-  //   setGoogleLoading(true);
-  //   window.open("https://reviewthis.biz/NepalLiquorsPvtLtd");
-  //   // Simulate verification delay
-  //   await new Promise(resolve => setTimeout(resolve, 10000)); // Set to 7 seconds
-  //   setGoogleLoading(false);
-  //   setGoogleVerified(true);
-  // }, []);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
     if (!instagramVerified) {
-      alert("Please complete all steps  before submitting.");
+      alert("Please complete all steps before submitting.");
       return;
     }
-    // if (!instagramVerified || !googleVerified) {
-    //   alert("Please complete all steps  before submitting.");
-    //   return;
-    // }
-
 
     const form = {
       Name,
       PhoneNumber,
-      DOB,
+      DOB: DOB ? DOB.toISOString() : '',
       Email,
     };
 
-    // submit via api
     const response = await fetch('/api/submit', {
       method: 'POST',
       headers: {
@@ -91,9 +67,8 @@ const Form: NextPage<FormType> = () => {
 
     setName('');
     setPhoneNumber('');
-    setDOB('');
+    setDOB(null);
     setEmail('');
-
   };
 
   return (
@@ -108,7 +83,6 @@ const Form: NextPage<FormType> = () => {
             label="Name"
             required
             InputLabelProps={{ shrink: true }}
-
             variant="outlined"
             value={Name}
             onChange={e => setName(e.target.value)}
@@ -119,33 +93,24 @@ const Form: NextPage<FormType> = () => {
             className={styles.input}
             color="primary"
             name="PhoneNumber"
-            label=" 10 Digit Phone Number"
+            label="10 Digit Phone Number"
             id="PhoneNumber"
             InputLabelProps={{ shrink: true }}
             required
             variant="outlined"
             value={PhoneNumber}
             onChange={e => setPhoneNumber(e.target.value)}
-            
           />
         </div>
         <div className={styles.nameInput}>
-          <TextField
-            className={styles.input}
-            color="primary"
-            name="DOB"
-            id="DOB"
-            label="Date of Birth"
-            type="date"
-            required
-            InputLabelProps={{ shrink: true }}
-            variant="outlined"
-            value={DOB}
-            onChange={e => setDOB(e.target.value)}
-          />
+          <LocalizationProvider dateAdapter={AdapterDateFns}>
+            <DatePicker
+              label="Date of Birth"
+              value={DOB}
+              onChange={(newValue: Date | null) => setDOB(newValue)}
+            />
+          </LocalizationProvider>
         </div>
-        
-        
         <div className={styles.nameInput}>
           <TextField
             className={styles.input}
@@ -160,8 +125,6 @@ const Form: NextPage<FormType> = () => {
             onChange={e => setEmail(e.target.value)}
           />
         </div>
-
-      
       </div>
 
       <Button
@@ -185,16 +148,6 @@ const Form: NextPage<FormType> = () => {
 
         {instagram1Loading ? <CircularProgress size={20} color="inherit" className={styles.circularProgress} /> : instagram1Verified ? <img className={styles.checkedIcon} alt="Verified" src="/checked-icon.svg" /> : null}
       </Button>
-      
-      {/* <Button
-        className={`${styles.ssoLogin} ${googleVerified ? styles.green : ''}`}
-        onClick={onSSOLogin1Click}
-        disabled={googleLoading || googleVerified}
-      >
-        <img className={styles.ssoIcon1} alt="" src="/sso-icon.svg" />
-        <div className={styles.label1}>Review us on Google</div>
-        {googleLoading ? <CircularProgress size={20} color="inherit" className={styles.circularProgress} /> : googleVerified ? <img className={styles.checkedIcon} alt="Verified" src="/checked-icon.svg" /> : null}
-      </Button> */}
 
       <Button className={styles.formSubmitButton} type="submit">
         <div className={styles.submit}>Submit</div>
