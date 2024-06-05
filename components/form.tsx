@@ -2,9 +2,6 @@ import React, { useState, useCallback, FormEvent } from "react";
 import { TextField, Button, CircularProgress } from "@mui/material";
 import styles from "./form.module.css";
 import { NextPage } from "next";
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 export type FormType = {
   className?: string;
@@ -13,19 +10,18 @@ export type FormType = {
 const Form: NextPage<FormType> = () => {
   const [Name, setName] = useState('');
   const [PhoneNumber, setPhoneNumber] = useState('');
-  const [DOB, setDOB] = useState<Date | null>(null);
+  const [DOB, setDOB] = useState('');
   const [Email, setEmail] = useState('');
-
   const [instagramLoading, setInstagramLoading] = useState(false);
   const [instagramVerified, setInstagramVerified] = useState(false);
-
   const [instagram1Loading, setInstagram1Loading] = useState(false);
   const [instagram1Verified, setInstagram1Verified] = useState(false);
 
   const onSSOLoginClick = useCallback(async () => {
     setInstagramLoading(true);
     window.open("https://www.instagram.com/signaturenepal/");
-    await new Promise(resolve => setTimeout(resolve, 4000));
+    // Simulate verification delay
+    await new Promise(resolve => setTimeout(resolve, 4000)); // Set to 7 seconds
     setInstagramLoading(false);
     setInstagramVerified(true);
   }, []);
@@ -33,7 +29,8 @@ const Form: NextPage<FormType> = () => {
   const onSSOLoginClick1 = useCallback(async () => {
     setInstagram1Loading(true);
     window.open("https://www.instagram.com/smirnoff.nepal/");
-    await new Promise(resolve => setTimeout(resolve, 4000));
+    // Simulate verification delay
+    await new Promise(resolve => setTimeout(resolve, 4000)); // Set to 7 seconds
     setInstagram1Loading(false);
     setInstagram1Verified(true);
   }, []);
@@ -49,10 +46,11 @@ const Form: NextPage<FormType> = () => {
     const form = {
       Name,
       PhoneNumber,
-      DOB: DOB ? DOB.toISOString() : '',
+      DOB,
       Email,
     };
 
+    // submit via api
     const response = await fetch('/api/submit', {
       method: 'POST',
       headers: {
@@ -67,7 +65,7 @@ const Form: NextPage<FormType> = () => {
 
     setName('');
     setPhoneNumber('');
-    setDOB(null);
+    setDOB('');
     setEmail('');
   };
 
@@ -93,7 +91,7 @@ const Form: NextPage<FormType> = () => {
             className={styles.input}
             color="primary"
             name="PhoneNumber"
-            label="10 Digit Phone Number"
+            label=" 10 Digit Phone Number"
             id="PhoneNumber"
             InputLabelProps={{ shrink: true }}
             required
@@ -103,13 +101,18 @@ const Form: NextPage<FormType> = () => {
           />
         </div>
         <div className={styles.nameInput}>
-          <LocalizationProvider dateAdapter={AdapterDateFns}>
-            <DatePicker
-              label="Date of Birth"
-              value={DOB}
-              onChange={(newValue: Date | null) => setDOB(newValue)}
-            />
-          </LocalizationProvider>
+        <TextField
+            className={styles.input}
+            color="primary"
+            name="DOB"
+            id="DOB"
+            label="Date of Birth (YYYY-MM-DD)"
+            required
+            InputLabelProps={{ shrink: true }}
+            variant="outlined"
+            value={DOB}
+            onChange={e => setDOB(e.target.value)}
+          />
         </div>
         <div className={styles.nameInput}>
           <TextField
@@ -134,7 +137,6 @@ const Form: NextPage<FormType> = () => {
       >
         <img className={styles.ssoIcon} alt="" src="/sso-icon@2x.png" />
         <div className={styles.label}>Follow @signaturenepal</div>
-
         {instagramLoading ? <CircularProgress size={20} color="inherit" className={styles.circularProgress} /> : instagramVerified ? <img className={styles.checkedIcon} alt="Verified" src="/checked-icon.svg" /> : null}
       </Button>
 
@@ -145,10 +147,9 @@ const Form: NextPage<FormType> = () => {
       >
         <img className={styles.ssoIcon} alt="" src="/sso-icon@2x.png" />
         <div className={styles.label}>Follow @smirnoff.nepal</div>
-
         {instagram1Loading ? <CircularProgress size={20} color="inherit" className={styles.circularProgress} /> : instagram1Verified ? <img className={styles.checkedIcon} alt="Verified" src="/checked-icon.svg" /> : null}
       </Button>
-
+      
       <Button className={styles.formSubmitButton} type="submit">
         <div className={styles.submit}>Submit</div>
       </Button>

@@ -98,11 +98,12 @@
   display: inline-block;
 }
 .letterLogo2 {
-  width: 169px;
+  width: auto;
   position: relative;
-  height: 24px;
+  height: 20px;
   object-fit: cover;
   mix-blend-mode: normal;
+  
 }
 .poweredByParent {
   flex: 1;
@@ -209,7 +210,8 @@
     font-size: 15px;
   }
   .letterLogo2 {
-    width: 100px;
+    width: auto;
+    margin-bottom: 10px;
   }
   .demoForm1Inner {
     margin-top: -100px;
