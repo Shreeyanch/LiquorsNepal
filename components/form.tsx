@@ -118,10 +118,10 @@ const Form: NextPage<FormType> = () => {
           <TextField
             className={styles.input}
             color="primary"
-            name="Email"
+            name="Address"
             id="Email"
-            label="Email"
-            type="email"
+            label="Address"
+            type="address"
             InputLabelProps={{ shrink: true }}
             variant="outlined"
             value={Email}
