@@ -121,6 +121,7 @@ const Form: NextPage<FormType> = () => {
             name="Address"
             id="Email"
             label="Address"
+            required
             type="address"
             InputLabelProps={{ shrink: true }}
             variant="outlined"
